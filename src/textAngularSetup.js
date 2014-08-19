@@ -378,7 +378,7 @@ angular.module('textAngularSetup', [])
 			editorScope.hidePopover();
 		};
 		event.preventDefault();
-		editorScope.displayElements.popover.css('width', '375px');
+		editorScope.displayElements.popover.css('width', '460px');
 		var container = editorScope.displayElements.popoverContainer;
 		container.empty();
 		var buttonGroup = angular.element('<div class="btn-group" style="padding-right: 6px;">');
@@ -447,18 +447,8 @@ angular.module('textAngularSetup', [])
 		buttonGroup.append(floatNone);
 		buttonGroup.append(floatRight);
 		container.append(buttonGroup);
-		
-		buttonGroup = angular.element('<div class="btn-group">');
-		var remove = angular.element('<button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1"><i class="fa fa-trash-o"></i></button>');
-		remove.on('click', function(event){
-			event.preventDefault();
-			$element.remove();
-			finishEdit();
-		});
-		buttonGroup.append(remove);
-		container.append(buttonGroup);
 
-        buttonGroup = angular.element('<div class="btn-group">');
+        buttonGroup = angular.element('<div class="btn-group" style="padding-right: 6px;">');
         var alt = angular.element('<button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1">Alt</button>');
         alt.on('click', function(event){
             event.preventDefault();
@@ -482,6 +472,16 @@ angular.module('textAngularSetup', [])
         buttonGroup.append(alt);
         buttonGroup.append(title);
         container.append(buttonGroup);
+
+        buttonGroup = angular.element('<div class="btn-group">');
+		var remove = angular.element('<button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1"><i class="fa fa-trash-o"></i></button>');
+		remove.on('click', function(event){
+			event.preventDefault();
+			$element.remove();
+			finishEdit();
+		});
+		buttonGroup.append(remove);
+		container.append(buttonGroup);
 
         editorScope.showPopover($element);
 		editorScope.showResizeOverlay($element);
