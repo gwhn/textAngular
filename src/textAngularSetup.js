@@ -460,7 +460,7 @@ angular.module('textAngularSetup', [])
 
         buttonGroup = angular.element('<div class="btn-group">');
         var alt = angular.element('<button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1">Alt</button>');
-        remove.on('click', function(event){
+        alt.on('click', function(event){
             event.preventDefault();
             var imgAlt = $window.prompt(taTranslations.insertAlt.dialogPrompt, $element.attr('alt'));
             if(imgAlt && imgAlt !== ''){
@@ -470,7 +470,7 @@ angular.module('textAngularSetup', [])
             finishEdit();
         });
         var title = angular.element('<button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1">Title</button>');
-        remove.on('click', function(event){
+        title.on('click', function(event){
             event.preventDefault();
             var imgTitle = $window.prompt(taTranslations.insertTitle.dialogPrompt, $element.attr('title'));
             if(imgTitle && imgTitle !== ''){
