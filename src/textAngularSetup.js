@@ -462,7 +462,7 @@ angular.module('textAngularSetup', [])
         var alt = angular.element('<button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1">Alt</button>');
         alt.on('click', function(event){
             event.preventDefault();
-            var imgAlt = $window.prompt(taTranslations.insertAlt.dialogPrompt, $element.attr('alt'));
+            var imgAlt = $window.prompt(taTranslations.addAlt.dialogPrompt, $element.attr('alt'));
             if(imgAlt && imgAlt !== ''){
                 $element.attr('alt', imgAlt);
                 editorScope.updateTaBindtaTextElement();
@@ -472,7 +472,7 @@ angular.module('textAngularSetup', [])
         var title = angular.element('<button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1">Title</button>');
         title.on('click', function(event){
             event.preventDefault();
-            var imgTitle = $window.prompt(taTranslations.insertTitle.dialogPrompt, $element.attr('title'));
+            var imgTitle = $window.prompt(taTranslations.addTitle.dialogPrompt, $element.attr('title'));
             if(imgTitle && imgTitle !== ''){
                 $element.attr('title', imgTitle);
                 editorScope.updateTaBindtaTextElement();
