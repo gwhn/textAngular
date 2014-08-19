@@ -151,7 +151,13 @@ angular.module('textAngularSetup', [])
 	insertLink: {
 		tooltip: 'Insert / edit link',
 		dialogPrompt: "Please enter a URL to insert"
-	}
+	},
+    addAlt: {
+        dialogPrompt: "Please enter an Alt attribute to insert"
+    },
+    addTitle: {
+        dialogPrompt: "Please enter an Title attribute to insert"
+    }
 })
 .run(['taRegisterTool', '$window', 'taTranslations', 'taSelection', function(taRegisterTool, $window, taTranslations, taSelection){
 	taRegisterTool("html", {
@@ -451,8 +457,33 @@ angular.module('textAngularSetup', [])
 		});
 		buttonGroup.append(remove);
 		container.append(buttonGroup);
-		
-		editorScope.showPopover($element);
+
+        buttonGroup = angular.element('<div class="btn-group">');
+        var alt = angular.element('<button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1">Alt</button>');
+        remove.on('click', function(event){
+            event.preventDefault();
+            var imgAlt = $window.prompt(taTranslations.insertAlt.dialogPrompt, $element.attr('alt'));
+            if(imgAlt && imgAlt !== ''){
+                $element.attr('alt', imgAlt);
+                editorScope.updateTaBindtaTextElement();
+            }
+            finishEdit();
+        });
+        var title = angular.element('<button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1">Title</button>');
+        remove.on('click', function(event){
+            event.preventDefault();
+            var imgTitle = $window.prompt(taTranslations.insertTitle.dialogPrompt, $element.attr('title'));
+            if(imgTitle && imgTitle !== ''){
+                $element.attr('title', imgTitle);
+                editorScope.updateTaBindtaTextElement();
+            }
+            finishEdit();
+        });
+        buttonGroup.append(alt);
+        buttonGroup.append(title);
+        container.append(buttonGroup);
+
+        editorScope.showPopover($element);
 		editorScope.showResizeOverlay($element);
 	};
 	
