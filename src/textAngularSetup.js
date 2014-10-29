@@ -141,10 +141,9 @@ angular.module('textAngularSetup', [])
 	},
 	insertImage: {
 		dialogPrompt: 'Please enter an image URL to insert',
-		tooltip: 'Insert image',
-		hotkey: 'the - possibly language dependent hotkey ... for some future implementation'
+		tooltip: 'Insert image'
 	},
-    insertImageUpload: {
+    insertImageFile: {
         tooltip: 'Insert image file',
     },
 	insertVideo: {
@@ -508,7 +507,7 @@ angular.module('textAngularSetup', [])
 
     taRegisterTool('insertImageFile', {
         display: '<div style="display: block; width: 100px; height: 20px; overflow: hidden;"><button style="width: 110px; height: 30px; position: relative; top: -5px; left: -5px;"><a href="javascript: void(0)" style="color:#000000">Upload Image</a></button><input type="file" id="fileUpload" name="fileUpload" style="font-size: 50px; width: 120px; opacity: 0; filter: alpha(opacity: 0); position: relative; top: -40px; left: -20px;" /></div>',
-        tooltiptext: taTranslations.insertImageUpload.tooltip,
+        tooltiptext: taTranslations.insertImageFile.tooltip,
         action: function(deferred){
             var editor = this.$editor(),
                 fileInput = angular.element(document.querySelector('#fileUpload'));
