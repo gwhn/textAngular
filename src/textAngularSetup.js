@@ -14,7 +14,7 @@ angular.module('textAngularSetup', [])
 		['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
 		['bold', 'italics', 'underline', 'ul', 'ol', 'redo', 'undo', 'clear'],
 		['justifyLeft','justifyCenter','justifyRight','indent','outdent'],
-		['html', 'insertImage', 'insertLink', 'insertVideo']
+		['html', 'insertImage', 'insertImageFile', 'insertLink', 'insertVideo']
 	],
 	classes: {
 		focussed: "focussed",
@@ -144,6 +144,9 @@ angular.module('textAngularSetup', [])
 		tooltip: 'Insert image',
 		hotkey: 'the - possibly language dependent hotkey ... for some future implementation'
 	},
+    insertImageUpload: {
+        tooltip: 'Insert image file',
+    },
 	insertVideo: {
 		tooltip: 'Insert video',
 		dialogPrompt: 'Please enter a youtube URL to embed'
@@ -502,6 +505,37 @@ angular.module('textAngularSetup', [])
 			action: imgOnSelectAction
 		}
 	});
+
+    taRegisterTool('insertImageFile', {
+        display: '<div style="display: block; width: 100px; height: 20px; overflow: hidden;"><button style="width: 110px; height: 30px; position: relative; top: -5px; left: -5px;"><a href="javascript: void(0)" style="color:#000000">Upload Image</a></button><input type="file" id="fileUpload" name="fileUpload" style="font-size: 50px; width: 120px; opacity: 0; filter: alpha(opacity: 0); position: relative; top: -40px; left: -20px;" /></div>',
+        tooltiptext: taTranslations.insertImageUpload.tooltip,
+        action: function(deferred){
+            var editor = this.$editor(),
+                fileInput = angular.element(document.querySelector('#fileUpload'));
+            fileInput.bind('change', function(e) {
+                var file = fileInput[0].files[0],
+                    imageType = /image.*/;
+                if (file.type.match(imageType)) {
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                        var img = new Image();
+                        img.src = reader.result;
+                        var imageLink = img.src;
+                        var urlObj = window.URL || window.webkitURL;
+                        var imageLink = urlObj.createObjectURL(file);
+                        editor.wrapSelection('insertHTML', '<img class="setImage" src="'+ imageLink + '" />');
+                        deferred.resolve();
+                    };
+                    reader.readAsDataURL(file);
+                    return false;
+                } else {
+                    editor.wrapSelection('innerText', 'File not supported!');
+                }
+            });
+            return true;
+        }
+    });
+
 	taRegisterTool('insertVideo', {
 		iconclass: 'fa fa-youtube-play',
 		tooltiptext: taTranslations.insertVideo.tooltip,
