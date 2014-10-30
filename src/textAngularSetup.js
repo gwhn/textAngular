@@ -14,7 +14,7 @@ angular.module('textAngularSetup', [])
             ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
             ['bold', 'italics', 'underline', 'ul', 'ol', 'redo', 'undo', 'clear'],
             ['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent'],
-            ['html', 'insertImageFile', 'insertLink', 'insertVideo']
+            ['html', 'insertFile', 'insertImageFile', 'insertLink', 'insertVideo']
         ],
         classes: {
             focussed: "focussed",
@@ -393,7 +393,7 @@ angular.module('textAngularSetup', [])
                 editorScope.hidePopover();
             };
             event.preventDefault();
-            editorScope.displayElements.popover.css('width', '460px');
+            editorScope.displayElements.popover.css('width', '461px');
             var container = editorScope.displayElements.popoverContainer;
             container.empty();
             var buttonGroup = angular.element('<div class="btn-group" style="padding-right: 6px;">');
