@@ -548,6 +548,10 @@ angular.module('textAngularSetup', [])
                     }
                 });
                 return true;
+            },
+            onElementSelect: {
+                element: 'img',
+                action: imgOnSelectAction
             }
         });
 
