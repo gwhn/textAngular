@@ -506,7 +506,10 @@ angular.module('textAngularSetup', [])
 	});
 
     taRegisterTool('insertImageFile', {
-        display: '<div style="display: block; width: 100px; height: 20px; overflow: hidden;"><button style="width: 110px; height: 30px; position: relative; top: -5px; left: -5px;"><a href="javascript: void(0)" style="color:#000000">Upload Image</a></button><input type="file" id="fileUpload" name="fileUpload" style="font-size: 50px; width: 120px; opacity: 0; filter: alpha(opacity: 0); position: relative; top: -40px; left: -20px;" /></div>',
+        display: '<button style="position: relative; overflow: hidden;">' +
+            '<i class="fa fa-picture-o"></i>' +
+            '<input type="file" id="fileUpload" name="fileUpload" style="position: absolute; top: 0; right: 0; min-width: 100%; min-height: 100%; font-size: 999px; text-align: right; filter: alpha(opacity=0); opacity: 0; cursor: inherit; display: block;" />' +
+            '</button>',
         tooltiptext: taTranslations.insertImageFile.tooltip,
         action: function(deferred){
             var editor = this.$editor(),
