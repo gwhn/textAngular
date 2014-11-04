@@ -17,12 +17,12 @@ angular.module('textAngularSetup', [])
             ['html', 'insertFile', 'insertImageFile', 'insertLink', 'insertVideo']
         ],
         classes: {
-            focussed: "focussed",
-            toolbar: "btn-toolbar",
-            toolbarGroup: "btn-group btn-group-sm",
-            toolbarButton: "btn btn-default",
-            toolbarButtonActive: "active",
-            disabled: "disabled",
+            focussed: 'focussed',
+            toolbar: 'btn-toolbar',
+            toolbarGroup: 'btn-group btn-group-sm',
+            toolbarButton: 'btn btn-default',
+            toolbarButtonActive: 'active',
+            disabled: 'disabled',
             textEditor: 'form-control',
             htmlEditor: 'form-control'
         },
@@ -67,7 +67,7 @@ angular.module('textAngularSetup', [])
             customAttribute: 'ta-insert-video',
             renderLogic: function (element) {
                 var iframe = angular.element('<iframe></iframe>');
-                var attributes = element.prop("attributes");
+                var attributes = element.prop('attributes');
                 // loop through element attributes and apply them on iframe
                 angular.forEach(attributes, function (attr) {
                     iframe.attr(attr.name, attr.value);
@@ -145,7 +145,7 @@ angular.module('textAngularSetup', [])
             tooltip: 'Insert image'
         },
         insertImageFile: {
-            tooltip: 'Insert image file',
+            tooltip: 'Insert image file'
         },
         insertVideo: {
             tooltip: 'Insert video',
@@ -153,17 +153,17 @@ angular.module('textAngularSetup', [])
         },
         insertLink: {
             tooltip: 'Insert / edit link',
-            dialogPrompt: "Please enter a URL to insert"
+            dialogPrompt: 'Please enter a URL to insert'
         },
         addAlt: {
-            dialogPrompt: "Please enter an Alt attribute to insert"
+            dialogPrompt: 'Please enter an Alt attribute to insert'
         },
         addTitle: {
-            dialogPrompt: "Please enter an Title attribute to insert"
+            dialogPrompt: 'Please enter an Title attribute to insert'
         }
     })
     .run(['taRegisterTool', '$window', 'taTranslations', 'taSelection', function (taRegisterTool, $window, taTranslations, taSelection) {
-        taRegisterTool("html", {
+        taRegisterTool('html', {
             buttontext: taTranslations.html.buttontext,
             tooltiptext: taTranslations.html.tooltip,
             action: function () {
@@ -181,7 +181,7 @@ angular.module('textAngularSetup', [])
             };
         };
         var headerAction = function () {
-            return this.$editor().wrapSelection("formatBlock", "<" + this.name.toUpperCase() + ">");
+            return this.$editor().wrapSelection('formatBlock', '<' + this.name.toUpperCase() + '>');
         };
         angular.forEach(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], function (h) {
             taRegisterTool(h.toLowerCase(), {
@@ -195,7 +195,7 @@ angular.module('textAngularSetup', [])
             buttontext: 'P',
             tooltiptext: taTranslations.p.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("formatBlock", "<P>");
+                return this.$editor().wrapSelection('formatBlock', '<P>');
             },
             activeState: function () {
                 return this.$editor().queryFormatBlockState('p');
@@ -206,7 +206,7 @@ angular.module('textAngularSetup', [])
             buttontext: 'pre',
             tooltiptext: taTranslations.pre.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("formatBlock", "<PRE>");
+                return this.$editor().wrapSelection('formatBlock', '<PRE>');
             },
             activeState: function () {
                 return this.$editor().queryFormatBlockState('pre');
@@ -216,7 +216,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-list-ul',
             tooltiptext: taTranslations.ul.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("insertUnorderedList", null);
+                return this.$editor().wrapSelection('insertUnorderedList', null);
             },
             activeState: function () {
                 return this.$editor().queryCommandState('insertUnorderedList');
@@ -226,7 +226,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-list-ol',
             tooltiptext: taTranslations.ol.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("insertOrderedList", null);
+                return this.$editor().wrapSelection('insertOrderedList', null);
             },
             activeState: function () {
                 return this.$editor().queryCommandState('insertOrderedList');
@@ -236,7 +236,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-quote-right',
             tooltiptext: taTranslations.quote.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("formatBlock", "<BLOCKQUOTE>");
+                return this.$editor().wrapSelection('formatBlock', '<BLOCKQUOTE>');
             },
             activeState: function () {
                 return this.$editor().queryFormatBlockState('blockquote');
@@ -246,21 +246,21 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-undo',
             tooltiptext: taTranslations.undo.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("undo", null);
+                return this.$editor().wrapSelection('undo', null);
             }
         });
         taRegisterTool('redo', {
             iconclass: 'fa fa-repeat',
             tooltiptext: taTranslations.redo.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("redo", null);
+                return this.$editor().wrapSelection('redo', null);
             }
         });
         taRegisterTool('bold', {
             iconclass: 'fa fa-bold',
             tooltiptext: taTranslations.bold.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("bold", null);
+                return this.$editor().wrapSelection('bold', null);
             },
             activeState: function () {
                 return this.$editor().queryCommandState('bold');
@@ -271,7 +271,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-align-left',
             tooltiptext: taTranslations.justifyLeft.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("justifyLeft", null);
+                return this.$editor().wrapSelection('justifyLeft', null);
             },
             activeState: function (commonElement) {
                 var result = false;
@@ -285,7 +285,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-align-right',
             tooltiptext: taTranslations.justifyRight.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("justifyRight", null);
+                return this.$editor().wrapSelection('justifyRight', null);
             },
             activeState: function (commonElement) {
                 var result = false;
@@ -298,7 +298,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-align-center',
             tooltiptext: taTranslations.justifyCenter.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("justifyCenter", null);
+                return this.$editor().wrapSelection('justifyCenter', null);
             },
             activeState: function (commonElement) {
                 var result = false;
@@ -311,7 +311,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-indent',
             tooltiptext: taTranslations.indent.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("indent", null);
+                return this.$editor().wrapSelection('indent', null);
             },
             activeState: function () {
                 return this.$editor().queryFormatBlockState('blockquote');
@@ -321,7 +321,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-outdent',
             tooltiptext: taTranslations.outdent.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("outdent", null);
+                return this.$editor().wrapSelection('outdent', null);
             },
             activeState: function () {
                 return false;
@@ -331,7 +331,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-italic',
             tooltiptext: taTranslations.italic.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("italic", null);
+                return this.$editor().wrapSelection('italic', null);
             },
             activeState: function () {
                 return this.$editor().queryCommandState('italic');
@@ -342,7 +342,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-underline',
             tooltiptext: taTranslations.underline.tooltip,
             action: function () {
-                return this.$editor().wrapSelection("underline", null);
+                return this.$editor().wrapSelection('underline', null);
             },
             activeState: function () {
                 return this.$editor().queryCommandState('underline');
@@ -353,7 +353,7 @@ angular.module('textAngularSetup', [])
             iconclass: 'fa fa-ban',
             tooltiptext: taTranslations.clear.tooltip,
             action: function (deferred, restoreSelection) {
-                this.$editor().wrapSelection("removeFormat", null);
+                this.$editor().wrapSelection('removeFormat', null);
                 var possibleNodes = angular.element(taSelection.getSelectionElement());
                 // remove lists
                 var removeListElements = function (list) {
@@ -367,8 +367,8 @@ angular.module('textAngularSetup', [])
                     });
                     list.remove();
                 };
-                angular.forEach(possibleNodes.find("ul"), removeListElements);
-                angular.forEach(possibleNodes.find("ol"), removeListElements);
+                angular.forEach(possibleNodes.find('ul'), removeListElements);
+                angular.forEach(possibleNodes.find('ol'), removeListElements);
                 // clear out all class attributes. These do not seem to be cleared via removeFormat
                 var $editor = this.$editor();
                 var recursiveRemoveClass = function (node) {
@@ -380,7 +380,7 @@ angular.module('textAngularSetup', [])
                 // check if in list. If not in list then use formatBlock option
                 if (possibleNodes[0].tagName.toLowerCase() !== 'li' &&
                     possibleNodes[0].tagName.toLowerCase() !== 'ol' &&
-                    possibleNodes[0].tagName.toLowerCase() !== 'ul') this.$editor().wrapSelection("formatBlock", "<p>");
+                    possibleNodes[0].tagName.toLowerCase() !== 'ul') this.$editor().wrapSelection('formatBlock', '<p>');
                 restoreSelection();
             }
         });
@@ -567,7 +567,7 @@ angular.module('textAngularSetup', [])
                     /* istanbul ignore else: if it's invalid don't worry - though probably should show some kind of error message */
                     if (ids.length > 0) {
                         // create the embed link
-                        var urlLink = "http://www.youtube.com/embed/" + ids[0].substring(3);
+                        var urlLink = 'http://www.youtube.com/embed/' + ids[0].substring(3);
                         // create the HTML
                         var embed = '<img class="ta-insert-video" ta-insert-video="' + urlLink + '" contenteditable="false" src="" allowfullscreen="true" width="300" frameborder="0" height="250"/>';
                         // insert
