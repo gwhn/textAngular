@@ -19,7 +19,7 @@ angular.module('textAngularSetup', [])
         classes: {
             focussed: "focussed",
             toolbar: "btn-toolbar",
-            toolbarGroup: "btn-group",
+            toolbarGroup: "btn-group btn-group-sm",
             toolbarButton: "btn btn-default",
             toolbarButtonActive: "active",
             disabled: "disabled",
