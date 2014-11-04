@@ -538,7 +538,7 @@ angular.module('textAngularSetup', [])
                             var imageLink = img.src;
                             var urlObj = window.URL || window.webkitURL;
                             var imageLink = urlObj.createObjectURL(file);
-                            editor.wrapSelection('insertHTML', '<img class="setImage" src="' + imageLink + '" />');
+                            editor.wrapSelection('insertHTML', '<img class="setImage" src="' + imageLink + '" />', true);
                             deferred.resolve();
                         };
                         reader.readAsDataURL(file);
