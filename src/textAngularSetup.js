@@ -519,16 +519,15 @@ angular.module('textAngularSetup', [])
         });
 
         taRegisterTool('insertImageFile', {
-            display: '<button style="position: relative; overflow: hidden;">' +
+            display: '<span style="position: relative; overflow: hidden;">' +
                 '<i class="fa fa-picture-o"></i>' +
                 '<input type="file" id="fileUpload" name="fileUpload" style="position: absolute; top: 0; right: 0; min-width: 100%; min-height: 100%; font-size: 999px; text-align: right; filter: alpha(opacity=0); opacity: 0; cursor: inherit; display: block;" />' +
-                '</button>',
+                '</span>',
             tooltiptext: taTranslations.insertImageFile.tooltip,
             action: function (deferred) {
                 var editor = this.$editor(),
                     fileInput = angular.element(document.querySelector('#fileUpload'));
                 fileInput.one('change', function (e) {
-                    console.log('fileInput.change', arguments);
                     var file = fileInput[0].files[0],
                         imageType = /image.*/;
                     if (file.type.match(imageType)) {
