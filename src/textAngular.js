@@ -425,6 +425,7 @@
                                 };
                                 if (event.shiftKey) {
                                     // keep ratio
+                                    var newRatio = pos.y / pos.x;
                                     pos.x = ratio > newRatio ? pos.x : pos.y / ratio;
                                     pos.y = ratio > newRatio ? pos.x * ratio : pos.y;
                                 }
