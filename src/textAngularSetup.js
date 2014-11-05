@@ -528,6 +528,7 @@ angular.module('textAngularSetup', [])
                 var editor = this.$editor(),
                     fileInput = angular.element(document.querySelector('#fileUpload'));
                 fileInput.one('change', function (e) {
+                    console.log('fileInput change', e, this);
                     var file = fileInput[0].files[0],
                         imageType = /image.*/;
                     if (file.type.match(imageType)) {
