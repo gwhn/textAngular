@@ -535,6 +535,7 @@ angular.module('textAngularSetup', [])
                         reader.onload = function () {
                             var img = new Image();
                             img.src = reader.result;
+                            console.log(img.src);
                             var imageLink = img.src;
                             var urlObj = window.URL || window.webkitURL;
                             var imageLink = urlObj.createObjectURL(file);
@@ -581,6 +582,7 @@ angular.module('textAngularSetup', [])
                 action: imgOnSelectAction
             }
         });
+
         taRegisterTool('insertLink', {
             tooltiptext: taTranslations.insertLink.tooltip,
             iconclass: 'fa fa-link',
