@@ -528,9 +528,9 @@ angular.module('textAngularSetup', [])
                 var editor = this.$editor(),
                     fileInput = angular.element(document.querySelector('#fileUpload'));
                 fileInput.one('change', function (e) {
-                    console.log('fileInput change', e, this);
                     var file = fileInput[0].files[0],
                         imageType = /image.*/;
+                    console.log(file, imageType);
                     if (file.type.match(imageType)) {
                         var reader = new FileReader();
                         reader.onloadend = function () {
