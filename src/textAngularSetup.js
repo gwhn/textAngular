@@ -532,14 +532,10 @@ angular.module('textAngularSetup', [])
                         imageType = /image.*/;
                     if (file.type.match(imageType)) {
                         var reader = new FileReader();
-                        reader.onload = function () {
+                        reader.onload = function (event) {
                             var img = new Image();
-                            img.src = reader.result;
-                            console.log(img.src);
-                            var imageLink = img.src;
-                            var urlObj = window.URL || window.webkitURL;
-                            var imageLink = urlObj.createObjectURL(file);
-                            editor.wrapSelection('insertHTML', '<img class="setImage" src="' + imageLink + '" />', true);
+                            img.src = event.target.result;
+                            editor.wrapSelection('insertHTML', '<img class="setImage" src="' + img.src + '" />', true);
                             deferred.resolve();
                         };
                         reader.readAsDataURL(file);
