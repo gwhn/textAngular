@@ -1965,8 +1965,10 @@
                     if (_document.selection && _document.selection.createRange) {
                         // IE case
                         range = _document.selection.createRange();
-                        container = range.parentElement();
-                        sel = {isCollapsed: range.text.length === 0};
+                        if (range.parentElement) {
+                            container = range.parentElement();
+                        }
+                        sel = {isCollapsed: range.text ? range.text.length === 0 : false};
                     } else if ($window.getSelection) {
                         sel = $window.getSelection();
                         if (sel.getRangeAt) {
