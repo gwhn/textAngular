@@ -530,18 +530,18 @@ angular.module('textAngularSetup', [])
                 fileInput.one('change', function (e) {
                     var file = fileInput[0].files[0],
                         imageType = /image.*/;
-                    console.log(file, imageType);
                     if (file.type.match(imageType)) {
                         var reader = new FileReader();
                         reader.onloadend = function () {
-                            editor.wrapSelection('insertHTML', '<img class="setImage" src="' + reader.result + '" />', true);
+                            editor.wrapSelection('insertImage', reader.result, true);
                             deferred.resolve();
                         };
                         reader.readAsDataURL(file);
-                        return false;
                     } else {
-                        editor.wrapSelection('innerText', 'File not supported!');
+                        editor.wrapSelection('innerText', 'File type not supported');
+                        deferred.reject('File type not supported');
                     }
+                    return false;
                 });
                 return true;
             },
