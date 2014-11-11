@@ -2021,7 +2021,7 @@
                     };
                 },
                 getOnlySelectedElements: function () {
-                    if (window.getSelection) {
+                    if ($window.getSelection) {
                         var sel = $window.getSelection();
                         if (!sel.isCollapsed) {
                             return getRangeSelectedNodes(sel.getRangeAt(0));
